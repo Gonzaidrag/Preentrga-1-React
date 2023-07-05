@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import ItemList from '../ItemList/ItemList'
 import { useParams } from 'react-router-dom'
-import {db} from '../../services/config';
+import {inventario} from '../../services/config';
 import { collection, getDocs, where, query } from 'firebase/firestore';
 
 const ItemListContainer = () => {
@@ -9,7 +9,7 @@ const ItemListContainer = () => {
   const {idCategoria} = useParams();
 
   useEffect( ()=> {
-    const misProductos = idCategoria ? query(collection(db, "productos"), where("idCat", "==", idCategoria)) : collection(db, "productos");
+    const misProductos = idCategoria ? query(collection(inventario, "inventario"), where("idCat", "==", idCategoria)) : collection(inventario, "inventario");
 
     getDocs(misProductos)
       .then(res => {

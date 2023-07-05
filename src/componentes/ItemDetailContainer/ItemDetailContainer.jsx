@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import ItemDetail from '../ItemDetail/ItemDetail';
 import { useParams } from 'react-router-dom';
-import { db } from '../../services/config';
+import { inventario } from '../../services/config';
 import { getDoc, doc } from 'firebase/firestore';
 
 
@@ -10,7 +10,7 @@ const ItemDetailContainer = () => {
     const { idItem } = useParams();
 
     useEffect(() => {
-        const nuevoDoc = doc(db, "productos", idItem);
+        const nuevoDoc = doc(inventario, "inventario", idItem);
 
         getDoc(nuevoDoc)
             .then(res => {
